@@ -22,7 +22,7 @@ public class DrawingFrame extends JFrame {
     private final JButton clear;
     private final JLabel shapeLabel;
     private final JComboBox<String> shapeSelect;
-    private final String[] shapeChoices = {"Line", "Oval", "Rectangle"};
+    private final String[] shapeChoices = { "Line", "Oval", "Rectangle" };
     private final JCheckBox filled;
 
     // 'Second line' panel and widgets
@@ -36,7 +36,6 @@ public class DrawingFrame extends JFrame {
     private final JLabel dashLength;
     private final JTextField dashLengthInput;
     private final JCheckBox dashed;
-    // Initialize primary and secondary colors to black and white
 
     // Initialize objects in drawing panel
     private Paint paint;
@@ -45,13 +44,12 @@ public class DrawingFrame extends JFrame {
     private Point mouseLocation;
     private ArrayList<Shapes> shapes = new ArrayList<>();
     private Shapes currentShape;
-    // Initial values for drawing
 
     // Initialize values for drawing
     private Color color1 = Color.BLACK;
     private Color color2 = Color.WHITE;
     private int lineWidthValue = 5;
-    private float[] dashLengthValue = {5};
+    private float[] dashLengthValue = { 5 };
 
     // Bottom status label
     private final JLabel statusLabel;
@@ -119,32 +117,27 @@ public class DrawingFrame extends JFrame {
         add(statusLabel, BorderLayout.SOUTH);
 
         // Widget event handlers
-        undo.addActionListener(
-                event -> {
-                    if (shapes.size() > 0) shapes.remove(shapes.size() - 1); // If some value exists, remove it.
-                    repaint();
-                }
-        );
-        clear.addActionListener(
-                event -> {
-                    shapes.clear();
-                    repaint();
-                }
-        );
-        firstColor.addActionListener(
-                event -> {
-                    color1 = JColorChooser.showDialog(DrawingFrame.this, "Choose a color", color1);
+        undo.addActionListener(event -> {
+            if (shapes.size() > 0)
+                shapes.remove(shapes.size() - 1); // If some value exists, remove it.
+            repaint();
+        });
+        clear.addActionListener(event -> {
+            shapes.clear();
+            repaint();
+        });
+        firstColor.addActionListener(event -> {
+            color1 = JColorChooser.showDialog(DrawingFrame.this, "Choose a color", color1);
 
-                    if (color1 == null) color1 = Color.BLACK;
-                }
-        );
-        secondColor.addActionListener(
-                event -> {
-                    color2 = JColorChooser.showDialog(DrawingFrame.this, "Choose a color", color2);
+            if (color1 == null)
+                color1 = Color.BLACK;
+        });
+        secondColor.addActionListener(event -> {
+            color2 = JColorChooser.showDialog(DrawingFrame.this, "Choose a color", color2);
 
-                    if (color2 == null) color2 = Color.WHITE;
-                }
-        );
+            if (color2 == null)
+                color2 = Color.WHITE;
+        });
     }
 
     /**
@@ -206,7 +199,8 @@ public class DrawingFrame extends JFrame {
                 }
 
                 if (dashed.isSelected()) {
-                    stroke = new BasicStroke(lineWidthValue, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND, 10, dashLengthValue, 0);
+                    stroke = new BasicStroke(lineWidthValue, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND, 10,
+                            dashLengthValue, 0);
                 } else {
                     stroke = new BasicStroke(lineWidthValue, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND);
                 }
@@ -224,7 +218,6 @@ public class DrawingFrame extends JFrame {
                 } else { // Line
                     currentShape = new Line(mouseLocation, mouseLocation, paint, stroke);
                 }
-
 
                 // Add to ArrayList
                 shapes.add(currentShape);
