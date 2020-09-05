@@ -3,6 +3,18 @@
 A Microsoft Paint-like application made in Java created for my Object Oriented
 Programming class.
 
+![img](https://cdn.discordapp.com/attachments/385581275160903680/751877706987208804/unknown.png)
+
+## Overview
+
+The project uses Java's `javax.swing` GUI library to create and render an
+application window. This allows the application to be platform independent,
+lightweight, and with swappable look and feel.
+
+The individual shapes are children of abstract shape objects, and the
+application demonstrates both inheritance and object utilization, as each
+individual brush stroke or object is an individual object itself.
+
 # License TL;DR
 
 This project is distributed under the MIT license. This is a paraphrasing of a
